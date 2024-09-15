@@ -12,4 +12,8 @@ CHIP Or {
 
     PARTS:
     //// Replace this comment with your code.
+    //// I am going to guess nand(not(a),not(b)) maybye there is something simpler but i am not sure
+    Not(in=a,out=a1);
+    Not(in=b,out=b1);
+    Nand(a=a1,b=b1,out=out);
 }
