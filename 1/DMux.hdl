@@ -13,4 +13,12 @@ CHIP DMux {
 
     PARTS:
     //// Replace this comment with your code.
+    Not(in=sel,out=notsel);
+    And(a=notsel, b=notsel, out=chooseA);
+    Not(in=chooseA,out=chooseB);
+
+    //Now set the values
+    And(a= chooseA,b = in,out = a);
+    And(a= chooseB,b = in,out = b);
+    
 }
