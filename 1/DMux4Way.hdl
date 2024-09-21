@@ -15,4 +15,20 @@ CHIP DMux4Way {
 
     PARTS:
     //// Replace this comment with your code.
+
+    Not(in=sel[1], out=n1);
+    Not(in=sel[0], out=n0);
+    And(a=n1, b=n0, out=chooseA);
+    And(a=n1, b=sel[0], out=chooseB);
+    And(a=sel[1], b=n0, out=chooseC);
+    And(a=sel[1], b=sel[0], out=chooseD);
+  
+
+
+    //Now set the values
+    And(a= chooseA,b = in,out = a);
+    And(a= chooseB,b = in,out = b);
+    And(a= chooseC,b = in,out = c);
+    And(a= chooseD,b = in,out = d);
+
 }
