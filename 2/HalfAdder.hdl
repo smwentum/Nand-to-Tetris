@@ -12,4 +12,11 @@ CHIP HalfAdder {
 
     PARTS:
     //// Replace this comment with your code.
+
+    //this is adding
+    Xor(a = a, b = b, out = sum);
+
+    ////this is carry
+    And(a = a, b= b, out = carry);
+
 }
