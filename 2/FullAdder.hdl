@@ -14,12 +14,12 @@ CHIP FullAdder {
     //// Replace this comment with your code.
 
 
-    //i am going to guess sum is a three way xor
     Xor(a =a , b = b, out = x1);
     Xor(a = x1, b = c, out=sum);
 
     HalfAdder(a = a, b = b, sum = x2, carry = x3);
-    HalfAdder(a = x2, b = c, sum = carry, carry = x4);
+    HalfAdder(a = x3, b = c, sum = sum1, carry = x4);
+    Or(a = x3, b = x4, out = carry);
 
 
 }
