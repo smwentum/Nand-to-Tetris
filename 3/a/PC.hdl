@@ -15,4 +15,31 @@ CHIP PC {
     
     PARTS:
     //// Replace this comment with your code.
+    
+    ////get the increment option
+    Inc16(in=regout, out=plusone);
+    
+    //if should increment
+	Mux16(a=false, b=plusone, sel=inc, out=incout);
+    
+    //pick between in, increment, and zero out option
+    Mux16(a=incout, b=in, sel=load, out=loadout);
+
+    //should i pick the zero out option
+	Mux16(a=loadout, b=false, sel=reset, out=toload);
+
+	Or(a=load, b=reset, out=loadorreset);
+	Or(a=loadorreset, b=inc, out=loadflag);
+
+    Register(in=toload, load=loadflag, out=regout);
+	Or16(a=regout, b=regout, out=out);
+    
+    
+
+
+    ////Register(in = in, load = true , out = out1);
+    ////Inc16(in = out1, out = out2);
+    ////Not(in = reset, out = notreset);
+
+    ////Mux4Way16(a[0..15] = false, b=in, c= out2, d = out1, sel[0]=notreset,sel[1]=inc , out = out  );
 }
